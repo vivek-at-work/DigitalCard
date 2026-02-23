@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vivek Srivastava | Digital V-Card</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --bg-start: #f0f5f3;
+      --bg-end: #e8efe9;
+      --card-bg: rgba(255, 255, 255, 0.72);
+      --card-border: rgba(107, 144, 128, 0.18);
+      --text-primary: #2c3e32;
+      --text-secondary: #4a5d52;
+      --text-muted: #6b7c72;
+      --accent: #5a8a7e;
+      --accent-soft: rgba(90, 138, 126, 0.2);
+      --accent-glow: rgba(90, 138, 126, 0.35);
+      --chip-bg: rgba(107, 144, 128, 0.08);
+      --chip-border: rgba(107, 144, 128, 0.2);
+      --chip-hover: rgba(90, 138, 126, 0.18);
+      --icon-default: #6b7c72;
+      --icon-hover: #5a8a7e;
+      --divider: rgba(107, 144, 128, 0.15);
+    }
+
+    html {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    body {
+      font-family: 'Roboto', Inter, system-ui, -apple-system, sans-serif;
+      background: radial-gradient(ellipse 120% 100% at 50% 0%, var(--bg-start) 0%, var(--bg-end) 70%);
+      min-height: 100vh;
+      overflow: hidden;
+      color: var(--text-primary);
+    }
+
+    .glass {
+      backdrop-filter: blur(24px) saturate(1.1);
+      -webkit-backdrop-filter: blur(24px) saturate(1.1);
+      background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.78) 0%,
+        rgba(255, 255, 255, 0.68) 100%
+      );
+      border: 1px solid var(--card-border);
+      box-shadow:
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.6),
+        0 1px 2px rgba(0, 0, 0, 0.04);
+    }
+
+    .glow:hover {
+      box-shadow:
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.6),
+        0 0 0 1px var(--accent-soft),
+        0 24px 56px var(--accent-glow),
+        0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    .float {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .tilt:hover {
+      transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) scale(1.01);
+    }
+
+    .chip {
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--chip-bg);
+      border: 1px solid var(--chip-border);
+      color: var(--text-secondary);
+      font-size: 12px;
+      transition: all .25s ease;
+    }
+
+    .chip:hover {
+      background: var(--chip-hover);
+      border-color: var(--accent);
+      color: var(--text-primary);
+      transform: translateY(-2px);
+    }
+
+    .icon-circle {
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--chip-bg);
+      border: 1px solid var(--chip-border);
+      transition: all .25s ease;
+    }
+
+    .icon-circle:hover {
+      box-shadow: 0 0 0 1px var(--accent-soft), 0 8px 24px var(--accent-glow);
+      transform: translateY(-4px) scale(1.05);
+    }
+
+    .icon-circle svg {
+      width: 22px;
+      height: 22px;
+      color: var(--icon-default);
+      stroke: currentColor;
+      transition: color .25s ease, transform .25s ease;
+    }
+
+    .icon-circle:hover svg {
+      color: var(--icon-hover);
+      transform: scale(1.1);
+    }
+
+    .icon-circle:active svg {
+      transform: scale(0.95);
+    }
+
+    .icon-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      color: inherit;
+      transition: transform .2s ease;
+    }
+
+    .icon-link:hover {
+      transform: translateY(-2px);
+    }
+
+    .icon-link:hover .icon-circle {
+      transform: translateY(-4px) scale(1.05);
+    }
+
+    .icon-link span {
+      color: var(--text-muted);
+      transition: color .25s ease;
+    }
+
+    .icon-link:hover span {
+      color: var(--icon-hover);
+    }
+  </style>
+</head>
+
+<body class="flex items-center justify-center px-4">
+
+  <div class="glass glow float tilt rounded-2xl p-8 max-w-md w-full relative">
+    
+    <!-- Header -->
+    <div class="mb-6">
+      <h1 class="text-3xl font-bold tracking-tight" style="color: var(--text-primary)">Vivek Srivastava</h1>
+      <p class="font-medium mt-1" style="color: var(--accent)">
+        Cloud Solutions Architect & Platform Engineer
+      </p>
+    </div>
+
+    <!-- Summary -->
+    <p class="text-sm leading-relaxed mb-6" style="color: var(--text-secondary)">
+      Cloud & Platform leader with 12+ years across full-stack, cloud architecture, and large-scale modernization.
+      Specialized in AWS/GCP/Azure platforms, zero-downtime migrations, event-driven systems, and resilient infrastructure.
+      Known for blending architecture depth with hands-on execution and engineering leadership.
+    </p>
+
+    <!-- Skill Chips -->
+    <div class="flex flex-wrap gap-2 mb-8">
+      <span class="chip">AWS</span>
+      <span class="chip">Data Engineering</span>
+      <span class="chip">Databricks</span>
+      <span class="chip">Kubernetes</span>
+      <span class="chip">Kafka</span>
+      <span class="chip">Python</span>
+      <span class="chip">Platform Engineering</span>
+      <span class="chip">Frontend Engineering</span>
+      <span class="chip">Stakeholder Management</span>
+    </div>
+
+    <!-- Contacts (Lucide icons) -->
+    <div class="grid grid-cols-4 gap-4 text-center">
+      <a href="mailto:developer.viveksrivastava@gmail.com" class="icon-link">
+        <div class="icon-circle">
+          <i data-lucide="mail"></i>
+        </div>
+        <span class="text-xs">Email</span>
+      </a>
+      <a href="#" class="icon-link">
+        <div class="icon-circle">
+          <i data-lucide="globe"></i>
+        </div>
+        <span class="text-xs">Portfolio</span>
+      </a>
+      <a href="#" class="icon-link">
+        <div class="icon-circle">
+          <i data-lucide="linkedin"></i>
+        </div>
+        <span class="text-xs">LinkedIn</span>
+      </a>
+      <a href="#" class="icon-link">
+        <div class="icon-circle">
+          <i data-lucide="github"></i>
+        </div>
+        <span class="text-xs">GitHub</span>
+      </a>
+    </div>
+
+    <!-- Footer -->
+    <div class="mt-8 pt-4 text-xs text-center" style="border-top: 1px solid var(--divider); color: var(--text-muted)">
+      Cloud & Platform Systems · Reliability · Scale · 2026
+    </div>
+
+  </div>
+
+  <script>lucide.createIcons();</script>
+</body>
+</html>
